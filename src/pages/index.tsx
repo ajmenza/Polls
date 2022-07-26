@@ -6,21 +6,12 @@ import { trpc } from "../utils/trpc";
 // export default function Home() {}
 
 const Home: NextPage = (props: any) => {
-  const { data, isLoading } = trpc.useQuery(["hello"]);
+  const { data, isLoading } = trpc.useQuery(["getAllQuestions"]);
 
   if (isLoading || !data) return <div>Loading...</div>;
 
-  return <div>{data.greeting}</div>;
+  return <div>{data[0]?.question}</div>;
 };
 
-export const getServerSideProps = async () => {
-  const questions = await prisma.pollQuestion.findMany();
-
-  return {
-    props: {
-      questions: JSON.stringify(questions),
-    },
-  };
-};
 
 export default Home;
