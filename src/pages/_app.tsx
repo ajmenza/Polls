@@ -1,10 +1,8 @@
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
-
 import { withTRPC } from "@trpc/next";
 import { AppType } from "next/dist/shared/lib/utils";
 import superjson from "superjson";
-import { AppRouter } from "../backend/router";
+import type { AppRouter } from "../backend/router";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return <Component {...pageProps} />;
